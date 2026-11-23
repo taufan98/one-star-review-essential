@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 REVIEW = (
-    "Sleep takes eight hours every night and still sends me to work tired, "
+    "Sleep takes eight hours a night and still sends me to work tired, "
     "like a subscription I cannot cancel."
 )
 
@@ -18,6 +18,8 @@ if not 1 <= len(text) <= 160:
     sys.exit(f"review must be 1-160 characters, got {len(text)}")
 if "\n" in text:
     sys.exit("review must be a single line")
+if "!" in text:
+    sys.exit("review must hold the deadpan: no exclamation marks")
 
 out_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 out_dir.mkdir(parents=True, exist_ok=True)
